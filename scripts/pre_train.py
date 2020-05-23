@@ -18,7 +18,7 @@ def load_model(path):
     except Exception as e:
         print(e)
 
-wpod_net_path = "wpod-net.json"
+wpod_net_path = "../model/wpod-net.json"
 wpod_net = load_model(wpod_net_path)
 
 def preprocess_image(image_path,resize=False):
@@ -30,7 +30,7 @@ def preprocess_image(image_path,resize=False):
     return img
 
 # Create a list of image paths 
-image_paths = glob.glob("es/*.jpg")
+image_paths = glob.glob("../Plate_examples/*.jpg")
 print("Found %i images..."%(len(image_paths)))
 
 # Visualize data in subplot 
@@ -62,7 +62,7 @@ def get_plate(image_path):
     return LpImg, cor
 
 # Obtain plate image and its coordinates from an image
-test_image = image_paths[2]
+test_image = image_paths[3]
 LpImg,cor = get_plate(test_image)
 print("Detect %i plate(s) in"%len(LpImg),splitext(basename(test_image))[0])
 print("Coordinate of plate(s) in image: \n", cor)
@@ -119,7 +119,7 @@ plt.show()
 
 # Extract mutiple plate license in one image 
 
-multiple_plates_image = "Plate_examples/multiple_plates.png"
+multiple_plates_image = "../Plate_examples/multiple_plates.png"
 LpImg,cor = get_plate(multiple_plates_image)
 
 print("Detect %i plate(s) in"%len(LpImg),splitext(basename(multiple_plates_image))[0])
